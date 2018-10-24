@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_filter_option_dynamic">
+    <sys_filter_option_dynamic action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <available_for_default>false</available_for_default>
+        <available_for_filter>false</available_for_filter>
+        <available_for_ref_qual>true</available_for_ref_qual>
+        <field_type display_value="Reference">52a227c1bf3320001875647fcf07396a</field_type>
+        <label>Get Budget Trans. Destination Qualifier</label>
+        <order/>
+        <roles>admin</roles>
+        <script>new getBudgetAccount().destination()</script>
+        <script_reference_id/>
+        <script_reference_table/>
+        <sys_class_name>sys_filter_option_dynamic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-24 04:42:11</sys_created_on>
+        <sys_id>1500611adb952300bf992bfa4b9619c8</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Get Budget Trans. Destination Qualifier</sys_name>
+        <sys_package display_value="Budget" source="x_258632_budget">f4111f1ddb812300bf992bfa4b9619dd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Budget">f4111f1ddb812300bf992bfa4b9619dd</sys_scope>
+        <sys_update_name>sys_filter_option_dynamic_1500611adb952300bf992bfa4b9619c8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-24 07:07:33</sys_updated_on>
+        <table>x_258632_budget_transaction_account</table>
+        <table_containing_filter/>
+    </sys_filter_option_dynamic>
+</record_update>

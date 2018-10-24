@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Transaction Account" max_length="40" name="x_258632_budget_transaction_account" type="collection">
+        <element attributes="ref_auto_completer=AJAXReferenceChoice" choice="3" default="Store" label="Account Type" max_length="32" name="account_type" reference="x_258632_budget_transaction_account_type" type="reference">
+            <choice/>
+        </element>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element choice="1" label="Owner" max_length="32" name="owner" reference="sys_user" reference_qual="roles=x_258632_budget.transactions_user^EQ" reference_qual_condition="roles=x_258632_budget.transactions_user^EQ" type="reference">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="owner"/>
+        </index>
+        <index name="index2">
+            <element name="account_type"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_258632_budget.getBudgetAccount</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>getBudgetAccount</name>
+        <script><![CDATA[var getBudgetAccount = Class.create();
+getBudgetAccount.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	source: function() {
+		var type = current.type.toString();
+		var query = '';
+		switch(type) {
+			case 'e12ff086db052300bf992bfa4b9619df': // Transfer
+			case '511ff086db052300bf992bfa4b9619dc': // Purchase
+			case '4b3ff446db052300bf992bfa4b9619f9': // Bill
+//				gs.info('Getting sources for Transfer, Purchase, or Bill.');
+
+				// Owner is Me or Blank, and type is Account
+				query = 'ownerDYNAMIC90d1921e5f510100a9ad2572f2b477fe^ORownerISEMPTY^account_type=927ef446db052300bf992bfa4b9619f6';
+				break;
+			case 'e31f7c46db052300bf992bfa4b961957': // Income
+//				gs.info('Getting sources for Income.');
+				// Owner is Me or Blank, and type is Income
+				query = 'ownerDYNAMIC90d1921e5f510100a9ad2572f2b477fe^ORownerISEMPTY^account_type=535e7c46db052300bf992bfa4b961951';
+		}
+		return query;
+	},
+	destination: function() {
+		var type = current.type.toString();
+		var query = '';
+		switch(type) {
+			case 'e12ff086db052300bf992bfa4b9619df': // Transfer
+			case 'e31f7c46db052300bf992bfa4b961957': // Income
+//				gs.info('Getting destinations for Transfer or Income.');
+				// Type is Account
+				query = 'account_type=927ef446db052300bf992bfa4b9619f6';
+				break;
+			case '511ff086db052300bf992bfa4b9619dc': // Purchase
+//				gs.info('Getting destinations for Purchase.');
+				// Type is Store
+				query = 'account_type=cf6e3c46db052300bf992bfa4b9619c1';
+				break;
+			case '4b3ff446db052300bf992bfa4b9619f9': // Bill
+//				gs.info('Getting destinations for Bill.');
+				// Owner is Me or Blank, and type is Invoicer
+				query = 'ownerDYNAMIC90d1921e5f510100a9ad2572f2b477fe^ORownerISEMPTY^account_type=859b8616db412300bf992bfa4b961959';
+				break;
+		}
+
+		return query;
+	},
+	run: function(query) {
+//		gs.info('Encoded query: ' + query);
+		var gr = new GlideRecord('x_258632_budget_transaction_account');
+
+		gr.addEncodedQuery(query);
+		gr.query();
+		gs.info('Row count: ' + gr.getRowCount());
+		
+		var ids = [];
+		while (gr.next()) {
+			ids.push(gr.sys_id.toString());
+		}
+
+		return ids.join(',');		
+	},
+    type: 'getBudgetAccount'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-24 04:33:58</sys_created_on>
+        <sys_id>95ab491edb552300bf992bfa4b961904</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>getBudgetAccount</sys_name>
+        <sys_package display_value="Budget" source="x_258632_budget">f4111f1ddb812300bf992bfa4b9619dd</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Budget">f4111f1ddb812300bf992bfa4b9619dd</sys_scope>
+        <sys_update_name>sys_script_include_95ab491edb552300bf992bfa4b961904</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-24 07:08:41</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Transactions" max_length="40" name="x_258632_budget_transactions" type="collection">
+        <element label="Amount" max_length="20" name="amount" type="currency"/>
+        <element label="Description" max_length="250" name="description" type="string_full_utf8"/>
+        <element attributes="ref_ac_columns=owner,ref_auto_completer=AJAXTableCompleter" dynamic_ref_qual="1500611adb952300bf992bfa4b9619c8" label="Destination" mandatory="true" max_length="32" name="destination" reference="x_258632_budget_transaction_account" reference_qual="javascript:new getBudgetAccount().destination()" type="reference" use_reference_qualifier="dynamic"/>
+        <element default="javascript:gs.now()" display="true" dynamic_default_value="fb7553e85f220100a9ad2572f2b477b4" label="Initiated" max_length="40" name="initiated" type="glide_date" use_dynamic_default="true"/>
+        <element default="javascript:getNextObjNumberPadded();" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" mandatory="true" max_length="10" name="number" read_only="true" type="string" use_dynamic_default="true"/>
+        <element default="javascript:gs.now()" dynamic_default_value="fb7553e85f220100a9ad2572f2b477b4" label="Resolved" max_length="40" name="resolved" type="glide_date" use_dynamic_default="true"/>
+        <element attributes="ref_ac_columns=owner,ref_auto_completer=AJAXTableCompleter" dynamic_ref_qual="a9f9c5dadb552300bf992bfa4b9619b2" label="Source" mandatory="true" max_length="32" name="source" reference="x_258632_budget_transaction_account" reference_qual="javascript:new getBudgetAccount().source()" type="reference" use_reference_qualifier="dynamic"/>
+        <element attributes="ref_auto_completer=AJAXReferenceChoice" choice="3" default="Purchase" label="Type" mandatory="true" max_length="32" name="type" reference="x_258632_budget_transaction_types" type="reference">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="destination"/>
+        </index>
+        <index name="index2">
+            <element name="source"/>
+        </index>
+        <index name="index3">
+            <element name="type"/>
+        </index>
+    </element>
+</database>
